@@ -146,6 +146,9 @@ if command -v eza &> /dev/null; then
 	alias la='eza -la --icons'
 fi
 
+# Export fuzzy finder
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Improve command history
 HISTSIZE=10000
 SAVEHIST=10000
