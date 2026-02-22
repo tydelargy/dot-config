@@ -1,0 +1,2 @@
+# dot-config
+Ubuntu config
