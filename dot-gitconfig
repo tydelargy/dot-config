@@ -1,0 +1,49 @@
+[user]
+	email = <INSERT>
+	name = <INSERT>
+[alias]
+	last = log -1 HEAD --stat
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n'' 	%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	lg = lg1
+	cm = commit -m
+	fap = fetch --all --prune
+	co = checkout
+	cob = checkout -b
+	oops = reset --soft
+	fuck = reset --hard HEAD
+	diff-all = !"for name in $(git diff --name-only $1); do git difftoool -y $1 $name & done"
+	diff-changes = diff --name-staus -r
+	diff-stat = diff --stat --ignore-space-changes -r
+	diff-staged = diff --cached
+	diff-upstream = !git fetch origin && git diff master origin/master
+	diff-nolok = diff master -- . ':(exclude)*.lock'
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+	side-by-side = true
+	line-numbers= true
+[merge]
+	confictstyle = diff3
+[diff]
+	colorMoved = default
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
