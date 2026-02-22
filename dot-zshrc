@@ -106,10 +106,6 @@
 
 ## BEGIN TY's CONFIG
 
-
-## Access Tokens
-GIT_PAT="<INSERT>"
-
 plugins=(
 	git 	# Git aliases and functions
 	z 	# Quick directory navigation
