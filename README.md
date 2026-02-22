@@ -19,6 +19,4 @@ Requires user and email replacement.
 
 There is a dependency on `delta` a colored diff tool for git. This .deb must be downloaded from releases page.
 
-### ~./zshrc 
 
-Requries `GIT_PAT` environment variable.
