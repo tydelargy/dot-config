@@ -18,6 +18,7 @@ fi
 
 sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt update
-sudo apt install neovim python3-neovim -y
+# build-essential provides gcc, required by nvim-treesitter to compile parsers
+sudo apt install neovim python3-neovim build-essential -y
 
 nvim --version | head -1
