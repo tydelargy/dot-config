@@ -158,7 +158,7 @@ bindkey '^R' history-incremental-search-backward
 
 
 # Source cargo environment
-[ -f "$$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # Fuzzy find and open in vim
 vf() {

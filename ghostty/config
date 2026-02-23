@@ -72,3 +72,5 @@ background = 1C2021
 keybind = ctrl+s>r=reload_config
 
 keybind = ctrl+s>z=toggle_split_zoom
+keybind = ctrl+s>e=equalize_splits
+keybind = ctrl+s>x=close_surface
