@@ -19,19 +19,20 @@ require("lazy").setup({
     -- Gruvbox dark theme
     { "ellisonleao/gruvbox.nvim", priority = 1000 },
 
+    -- Telescope: fuzzy finder
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
     -- Treesitter: accurate syntax highlighting and indentation.
-    -- Pinned to v0.9.3 for nvim 0.9.x compatibility.
-    -- After upgrade to nvim 0.10+, this pin can be removed.
     {
         "nvim-treesitter/nvim-treesitter",
-        tag = "v0.9.3",
         build = ":TSUpdate",
     },
 
     -- LSP: language server support.
-    -- Pinned to last commit before nvim 0.10 became a hard requirement.
-    -- Pin can be removed after upgrading to nvim 0.10+.
-    { "neovim/nvim-lspconfig", commit = "cb33dea6" },
+    { "neovim/nvim-lspconfig" },
 
     -- Mason: installs and manages LSP servers, linters, formatters
     { "williamboman/mason.nvim" },

@@ -58,18 +58,17 @@ local servers = {
 
 require("mason").setup()
 
--- automatic_enable uses vim.lsp.enable() (nvim 0.11+ API) — disable for now.
 require("mason-lspconfig").setup({
-    ensure_installed  = vim.tbl_keys(servers),
-    automatic_enable  = false,
+    ensure_installed = vim.tbl_keys(servers),
+    automatic_enable = true,
 })
 
--- ── Configure each server ─────────────────────────────────────────────────
-
-local lspconfig = require("lspconfig")
+-- ── Configure each server (nvim 0.11+ API) ────────────────────────────────
+-- vim.lsp.config merges with lspconfig's base configs (cmd, root_dir, etc.).
+-- vim.lsp.enable is called by mason-lspconfig via automatic_enable.
 
 for server, extra in pairs(servers) do
-    lspconfig[server].setup(vim.tbl_deep_extend("force", {
+    vim.lsp.config(server, vim.tbl_deep_extend("force", {
         capabilities = capabilities,
         on_attach    = on_attach,
     }, extra))
