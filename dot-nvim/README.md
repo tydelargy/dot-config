@@ -12,12 +12,13 @@ Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim).
 dot-nvim/
 ├── init.lua                    # Entry point: loads options, plugins, autocmds
 ├── lua/config/
-│   ├── options.lua             # Editor settings (vim.opt)
+│   ├── options.lua             # Editor settings (vim.opt) and leader key
 │   ├── lazy.lua                # Plugin list and lazy.nvim bootstrap
 │   └── autocmds.lua            # Autocommands (yank highlight, whitespace trim)
 └── after/plugin/
     ├── colors.lua              # Gruvbox theme setup
-    ├── treesitter.lua          # Treesitter parser config
+    ├── treesitter.lua          # Treesitter parser installation
+    ├── telescope.lua           # Telescope keybinds
     └── lsp.lua                 # LSP, Mason, and completion setup
 ```
 
@@ -37,9 +38,9 @@ Retro dark color scheme. Configured with `contrast = "hard"` and `background = "
 ### Syntax
 
 #### [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-Accurate syntax highlighting and indentation using language-specific parsers rather than regex. Parsers are compiled from C source (requires `gcc`).
+Manages installation of tree-sitter language parsers (compiled from C, requires `gcc`). As of nvim-treesitter v1.0 and Neovim 0.11, highlighting and indentation are built into Neovim itself — the plugin's only job is parser installation.
 
-Parsers installed automatically:
+Parsers installed on startup:
 
 | Parser | Language |
 |---|---|
@@ -54,16 +55,23 @@ Parsers installed automatically:
 
 ---
 
+### Navigation
+
+#### [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+Fuzzy finder for files, git-tracked files, help tags, and arbitrary grep searches. Results open in a floating picker with live preview. Requires [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) (bundled as a dependency).
+
+---
+
 ### LSP
 
 #### [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-Configurations for Neovim's built-in LSP client. Wires each language server to the editor. Requires Neovim 0.10+.
+Provides base server configurations (command paths, root-dir detection, filetypes) for Neovim's built-in LSP client. As of Neovim 0.11 these configs are consumed via `vim.lsp.config` / `vim.lsp.enable` rather than the older `lspconfig[server].setup()` pattern.
 
 #### [mason.nvim](https://github.com/williamboman/mason.nvim)
 Package manager for LSP servers, linters, and formatters. Installs them into `~/.local/share/nvim/mason/`. Open `:Mason` to browse and manage installed tools.
 
 #### [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-Bridge between Mason and nvim-lspconfig. Ensures the servers listed in the config are installed on startup.
+Bridge between Mason and nvim-lspconfig. Ensures the servers listed in the config are installed on startup and automatically enables them via `vim.lsp.enable`.
 
 **Configured language servers:**
 
@@ -100,6 +108,20 @@ Source adapters that feed data into nvim-cmp.
 ## Keybinds
 
 Only bindings added by this config are listed. All default Neovim bindings remain unchanged.
+
+**Leader key**: `Space`
+
+### File navigation
+
+| Mode | Key | Action |
+|---|---|---|
+| Normal | `Space Space` | Open netrw (built-in file explorer) |
+| Normal | `Space pf` | Telescope: find any file in the project |
+| Normal | `Ctrl+P` | Telescope: find file tracked by git |
+| Normal | `Space ps` | Telescope: grep for a string (prompts for input) |
+| Normal | `Space vh` | Telescope: search help tags |
+
+**Telescope usage**: type to filter, `Ctrl+N`/`Ctrl+P` to move, `Enter` to open, `Esc` to close.
 
 ### LSP (active in buffers with a language server attached)
 
@@ -321,7 +343,7 @@ lazy.nvim commands (run from inside Neovim):
 
 | Requirement | Why |
 |---|---|
-| Neovim 0.10+ | nvim-lspconfig requires 0.10+ |
+| Neovim 0.11+ | Required for `vim.lsp.config` / `vim.lsp.enable` native LSP API |
 | `gcc` / `build-essential` | nvim-treesitter compiles parsers from C source |
 | `git` | lazy.nvim clones plugins via git |
 | Node.js / `npm` | Mason uses npm to install pyright |
