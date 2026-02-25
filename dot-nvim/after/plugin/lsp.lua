@@ -21,13 +21,31 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", "K",   vim.lsp.buf.hover,        o)  -- hover docs
     vim.keymap.set("n", "[d",  vim.diagnostic.goto_prev, o)  -- prev diagnostic
     vim.keymap.set("n", "]d",  vim.diagnostic.goto_next, o)  -- next diagnostic
+
+    -- Inlay hints (type hints, parameter names, lifetimes) — nvim 0.10+ API.
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
 -- ── Server definitions ────────────────────────────────────────────────────
 -- Add extra per-server settings in the nested table.
 
 local servers = {
-    rust_analyzer = {},
+    rust_analyzer = {
+        settings = {
+            ["rust-analyzer"] = {
+                inlayHints = {
+                    typeHints          = { enable = true },
+                    chainingHints      = { enable = true },
+                    parameterHints     = { enable = true },
+                    -- "always" shows hints even for trivial cases; use "skip_trivial" to reduce noise
+                    lifetimeElisionHints = { enable = "always", useParameterNames = true },
+                    -- "mutable" shows hints only for mutable reborrows; "always" shows all
+                    reborrowHints      = { enable = "mutable" },
+                    closureReturnTypeHints = { enable = "always" },
+                },
+            },
+        },
+    },
     pyright       = {},
     lua_ls = {
         settings = {

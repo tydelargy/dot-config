@@ -110,6 +110,21 @@ Only bindings added by this config are listed. All default Neovim bindings remai
 | Normal | `[d` | Jump to previous diagnostic |
 | Normal | `]d` | Jump to next diagnostic |
 
+### Inlay Hints
+
+Inlay hints are enabled automatically in every LSP buffer. They render inline, greyed-out annotations in the editor without occupying a column.
+
+| Hint type | Languages | Example |
+|---|---|---|
+| Type hints | All | `let x/*: i32*/ = 1 + 1` |
+| Parameter names | All | `foo(/*value:*/ 42)` |
+| Chaining hints | All | Annotates intermediate types in method chains |
+| Closure return types | All | `\|x\| /*-> bool*/ x > 0` |
+| Lifetime elision hints | Rust | Shows inferred lifetimes on references |
+| Reborrow hints | Rust | Shows `&mut` reborrows (mutable only, to reduce noise) |
+
+To toggle hints off temporarily: `:lua vim.lsp.inlay_hint.enable(false)`
+
 ### Completion menu (active when popup is open)
 
 | Mode | Key | Action |
@@ -118,6 +133,139 @@ Only bindings added by this config are listed. All default Neovim bindings remai
 | Insert | `Ctrl+N` | Select next item |
 | Insert | `Ctrl+Y` | Confirm selection |
 | Insert | `Ctrl+Space` | Trigger completion manually |
+
+---
+
+## Essential Neovim Basics
+
+All of the below are stock Neovim — nothing added by this config.
+
+### Modes
+
+Neovim is modal: keys do different things depending on the current mode.
+
+| Mode | How to enter | Indicator |
+|---|---|---|
+| Normal | `Esc` from anywhere | Default mode |
+| Insert | `i` (before cursor), `a` (after cursor) | `-- INSERT --` |
+| Visual | `v` (character), `V` (line), `Ctrl+V` (block) | `-- VISUAL --` |
+| Command | `:` from Normal | `:` prompt at bottom |
+
+### Saving and Quitting
+
+| Command | Action |
+|---|---|
+| `:w` | Save (write) |
+| `:q` | Quit (fails if unsaved changes) |
+| `:wq` or `:x` | Save and quit |
+| `:q!` | Quit without saving |
+| `:wqa` | Save and quit all open buffers |
+
+### Navigation (Normal mode)
+
+| Key | Action |
+|---|---|
+| `h` `j` `k` `l` | Left / down / up / right |
+| `w` | Jump forward to start of next word |
+| `b` | Jump backward to start of previous word |
+| `e` | Jump to end of current word |
+| `0` | Jump to start of line |
+| `$` | Jump to end of line |
+| `gg` | Jump to first line of file |
+| `G` | Jump to last line of file |
+| `{number}G` | Jump to line number (e.g. `42G`) |
+| `Ctrl+D` | Scroll half-page down |
+| `Ctrl+U` | Scroll half-page up |
+| `%` | Jump to matching bracket/paren/brace |
+
+### Jump List (navigation history)
+
+| Key | Action |
+|---|---|
+| `Ctrl+O` | Go back in jump history |
+| `Ctrl+I` | Go forward in jump history |
+
+Useful after `gd` (go to definition) to return to where you were.
+
+### Editing (Normal mode)
+
+| Key | Action |
+|---|---|
+| `x` | Delete character under cursor |
+| `dd` | Delete (cut) current line |
+| `yy` | Yank (copy) current line |
+| `p` | Paste after cursor |
+| `P` | Paste before cursor |
+| `u` | Undo |
+| `Ctrl+R` | Redo |
+| `o` | Open new line below and enter Insert |
+| `O` | Open new line above and enter Insert |
+| `r` | Replace single character under cursor |
+| `ciw` | Change inner word (delete word, enter Insert) |
+| `cc` | Change entire line |
+| `.` | Repeat last change |
+
+### Operators + Motions
+
+Operators combine with motions: `{operator}{motion}`.
+
+| Operator | Meaning |
+|---|---|
+| `d` | Delete (cut) |
+| `y` | Yank (copy) |
+| `c` | Change (delete + enter Insert) |
+
+Examples:
+- `dw` — delete to end of word
+- `d$` — delete to end of line
+- `y3j` — yank current line plus 3 lines down
+- `ci"` — change text inside quotes
+- `da(` — delete text including surrounding parens
+
+### Search
+
+| Key | Action |
+|---|---|
+| `/pattern` | Search forward |
+| `?pattern` | Search backward |
+| `n` | Next match |
+| `N` | Previous match |
+| `*` | Search for word under cursor (forward) |
+| `#` | Search for word under cursor (backward) |
+
+### Visual Mode
+
+Select text, then apply an operator:
+
+| Key | Action |
+|---|---|
+| `v` | Enter character-wise visual |
+| `V` | Enter line-wise visual |
+| `Ctrl+V` | Enter block visual (column select) |
+| `d` | Delete selection |
+| `y` | Yank selection |
+| `>` / `<` | Indent / dedent selection |
+
+### Windows and Buffers
+
+| Command / Key | Action |
+|---|---|
+| `:e {file}` | Open file in current window |
+| `:vs {file}` | Open file in vertical split |
+| `:sp {file}` | Open file in horizontal split |
+| `Ctrl+W W` | Cycle between windows |
+| `Ctrl+W H/J/K/L` | Move focus left/down/up/right |
+| `:bn` / `:bp` | Next / previous buffer |
+| `:bd` | Close current buffer |
+| `:ls` | List open buffers |
+
+### Command-line Tips
+
+| Key | Action |
+|---|---|
+| `Ctrl+R` (in Insert mode) | Reverse search shell history (via zsh vi mode) |
+| `Tab` | Autocomplete file/command names in `:` prompt |
+| `Up` / `Down` | Cycle command history in `:` prompt |
 
 ---
 
@@ -173,8 +321,9 @@ lazy.nvim commands (run from inside Neovim):
 
 | Requirement | Why |
 |---|---|
-| Neovim 0.10+ | nvim-lspconfig hard requirement |
+| Neovim 0.10+ | nvim-lspconfig requires 0.10+ |
 | `gcc` / `build-essential` | nvim-treesitter compiles parsers from C source |
 | `git` | lazy.nvim clones plugins via git |
+| Node.js / `npm` | Mason uses npm to install pyright |
 
 Run `bash ~/sources/dot-config/install/nvim.sh` to satisfy all of the above on Ubuntu.
