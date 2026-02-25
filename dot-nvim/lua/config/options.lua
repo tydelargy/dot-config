@@ -23,3 +23,8 @@ vim.opt.swapfile       = false
 vim.opt.backup         = false
 vim.opt.undofile       = true
 vim.opt.undodir        = vim.fn.stdpath("data") .. "/undodir"
+
+-- Keybinds
+
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader><leader>", vim.cmd.Ex)
