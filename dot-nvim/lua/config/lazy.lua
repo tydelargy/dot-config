@@ -19,6 +19,9 @@ require("lazy").setup({
     -- Gruvbox dark theme
     { "ellisonleao/gruvbox.nvim", priority = 1000 },
 
+    -- which-key: keybinding popup helper
+    { "folke/which-key.nvim", event = "VeryLazy" },
+
     -- Telescope: fuzzy finder
     {
         "nvim-telescope/telescope.nvim",

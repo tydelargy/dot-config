@@ -17,10 +17,10 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local on_attach = function(_, bufnr)
     local o = { buffer = bufnr, remap = false }
-    vim.keymap.set("n", "gd",  vim.lsp.buf.definition,  o)  -- go to definition
-    vim.keymap.set("n", "K",   vim.lsp.buf.hover,        o)  -- hover docs
-    vim.keymap.set("n", "[d",  vim.diagnostic.goto_prev, o)  -- prev diagnostic
-    vim.keymap.set("n", "]d",  vim.diagnostic.goto_next, o)  -- next diagnostic
+    vim.keymap.set("n", "gd",  vim.lsp.buf.definition,  vim.tbl_extend("force", o, { desc = "Go to definition" }))
+    vim.keymap.set("n", "K",   vim.lsp.buf.hover,        vim.tbl_extend("force", o, { desc = "Hover docs" }))
+    vim.keymap.set("n", "[d",  vim.diagnostic.goto_prev, vim.tbl_extend("force", o, { desc = "Previous diagnostic" }))
+    vim.keymap.set("n", "]d",  vim.diagnostic.goto_next, vim.tbl_extend("force", o, { desc = "Next diagnostic" }))
 
     -- Inlay hints (type hints, parameter names, lifetimes) — nvim 0.10+ API.
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
