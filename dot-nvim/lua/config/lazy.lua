@@ -44,6 +44,9 @@ require("lazy").setup({
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
 
+    -- Formatting
+    { "stevearc/conform.nvim", event = { "BufWritePre" } },
+
     -- Completion
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },   -- LSP completions
