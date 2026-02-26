@@ -24,6 +24,13 @@ local on_attach = function(_, bufnr)
 
     -- Inlay hints (type hints, parameter names, lifetimes) — nvim 0.10+ API.
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer   = bufnr,
+        callback = function()
+            vim.lsp.buf.format({ async = false })
+        end,
+    })
 end
 
 -- ── Server definitions ────────────────────────────────────────────────────
@@ -47,6 +54,10 @@ local servers = {
         },
     },
     pyright       = {},
+    jsonls        = {},
+    bashls        = {},
+    marksman      = {},
+    clangd        = {},
     lua_ls = {
         settings = {
             Lua = { diagnostics = { globals = { "vim" } } },

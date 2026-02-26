@@ -1,7 +1,7 @@
 local wk = require("which-key")
 wk.setup({})
 wk.add({
-    { "<leader>p", group = "project" },
+    { "<leader>f", group = "telescope" },
     { "<leader>v", group = "vim" },
     { "<leader>x", group = "trouble" },
 })
