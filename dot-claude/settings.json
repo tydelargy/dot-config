@@ -15,10 +15,13 @@
 			"Bash(cargo fmt:*)",
 			"Bash(cargo doc:*)",
 			"Bash(cargo nextest run:*)",
-			"Bash(pytest:*)"
+			"Bash(pytest:*)",
+            "Baah(./venv/bin/activate)",
+            "Read(~/.claude:*)"
 		],
 		"deny": [
 			"Bash(git push:*)",
+            "Bash(git commit:*)",
 			"Bash(git reset:*)",
 			"Bash(git rebase:*)"
 		]

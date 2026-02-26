@@ -22,6 +22,9 @@ require("lazy").setup({
     -- which-key: keybinding popup helper
     { "folke/which-key.nvim", event = "VeryLazy" },
 
+    -- trouble.nvim: structured diagnostics/references panel
+    { "folke/trouble.nvim", event = "VeryLazy", dependencies = { "nvim-tree/nvim-web-devicons" } },
+
     -- Telescope: fuzzy finder
     {
         "nvim-telescope/telescope.nvim",
