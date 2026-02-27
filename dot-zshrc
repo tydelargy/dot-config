@@ -135,6 +135,15 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 
+sshclean(){
+    ssh-keygen -R "$2" > /dev/null 2&1
+    ssh "$1@$2"
+}
+
+nfl(){
+    nix flake lock --update-input "$1"
+}
+
 # Use eza instead of ls if available
 if command -v eza &> /dev/null; then
 	alias ls='eza --icons'
