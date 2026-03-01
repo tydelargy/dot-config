@@ -4,4 +4,6 @@ wk.add({
     { "<leader>f", group = "telescope" },
     { "<leader>v", group = "vim" },
     { "<leader>x", group = "trouble" },
+    { "g",         group = "lsp / goto" },
+    { "gr",        group = "lsp actions" },
 })

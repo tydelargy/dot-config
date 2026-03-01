@@ -4,5 +4,5 @@
 -- install() skips already-installed parsers by default.
 
 require("nvim-treesitter.install").install({
-    "bash", "json", "lua", "markdown", "python", "rust", "toml", "yaml",
+    "bash", "json", "lua", "markdown", "markdown_inline", "python", "rust", "toml", "yaml",
 })
