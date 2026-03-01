@@ -1,36 +1,36 @@
 {
-    "env": {},
-    "permissions": {
-        "allow": [
-            "Bash(echo:*)",
-            "Bash(git log:*)",
-            "Bash(git status:*)",
-            "Bash(git diff:*)",
-            "Bash(jq:*)",
-            "Bash(wc:*)",
-            "Bash(cargo build:*)",
-            "Bash(cargo check:*)",
-            "Bash(cargo clippy:*)",
-            "Bash(cargo fmt:*)",
-            "Bash(cargo doc:*)",
-            "Bash(cargo nextest run:*)",
-            "Bash(pytest:*)",
-            "Baah(./venv/bin/activate)",
-            "Read(~/.claude:*)"
-        ],
-        "deny": [
-            "Bash(git push:*)",
-            "Bash(git commit:*)",
-            "Bash(git reset:*)",
-            "Bash(git rebase:*)"
-        ]
-    },
-    "enabledPlugins": {
-        "rust-analyzer-lsp@claude-plugins-official": true,
-        "document-skills@anthropic-agent-skills": true,
-        "code-review@claude-plugins-official": true,
-        "superpowers@claude-plugins-official": true,
-        "context7@claude-plugins-official": true,
-        "code-review@claude-plugins-official": true
-    }
+  "env": {},
+  "permissions": {
+    "allow": [
+      "Bash(echo:*)",
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(jq:*)",
+      "Bash(wc:*)",
+      "Bash(cargo build:*)",
+      "Bash(cargo check:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(cargo doc:*)",
+      "Bash(cargo nextest run:*)",
+      "Bash(pytest:*)",
+      "Baah(./venv/bin/activate)"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)"
+    ]
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "document-skills@anthropic-agent-skills": true,
+    "code-review@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
+  }
 }
