@@ -20,10 +20,10 @@ require("lazy").setup({
     { "ellisonleao/gruvbox.nvim", priority = 1000 },
 
     -- which-key: keybinding popup helper
-    { "folke/which-key.nvim", event = "VeryLazy" },
+    { "folke/which-key.nvim",     event = "VeryLazy" },
 
     -- trouble.nvim: structured diagnostics/references panel
-    { "folke/trouble.nvim", event = "VeryLazy", dependencies = { "nvim-tree/nvim-web-devicons" } },
+    { "folke/trouble.nvim",       event = "VeryLazy", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
     -- Telescope: fuzzy finder
     {
@@ -37,6 +37,9 @@ require("lazy").setup({
         build = ":TSUpdate",
     },
 
+    -- Rainbow delimiters: colorize matching brackets using treesitter
+    { "HiPhish/rainbow-delimiters.nvim", dependencies = { "nvim-treesitter/nvim-treesitter" } },
+
     -- LSP: language server support.
     { "neovim/nvim-lspconfig" },
 
@@ -45,14 +48,14 @@ require("lazy").setup({
     { "williamboman/mason-lspconfig.nvim" },
 
     -- Formatting
-    { "stevearc/conform.nvim", event = { "BufWritePre" } },
+    { "stevearc/conform.nvim",            event = { "BufWritePre" } },
 
     -- Completion
     { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },   -- LSP completions
-    { "hrsh7th/cmp-buffer" },     -- completions from open buffers
-    { "hrsh7th/cmp-path" },       -- filesystem path completions
-    { "L3MON4D3/LuaSnip" },       -- snippet engine (required by nvim-cmp)
+    { "hrsh7th/cmp-nvim-lsp" }, -- LSP completions
+    { "hrsh7th/cmp-buffer" },   -- completions from open buffers
+    { "hrsh7th/cmp-path" },     -- filesystem path completions
+    { "L3MON4D3/LuaSnip" },     -- snippet engine (required by nvim-cmp)
     { "saadparwaiz1/cmp_luasnip" },
 
 })

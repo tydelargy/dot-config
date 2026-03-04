@@ -3,6 +3,11 @@
 -- Highlighting and indentation are built-in to nvim 0.11+.
 -- install() skips already-installed parsers by default.
 
-require("nvim-treesitter.install").install({
-    "bash", "json", "lua", "markdown", "markdown_inline", "python", "rust", "toml", "yaml",
+local parsers = { "bash", "json", "lua", "markdown", "markdown_inline", "python", "rust", "toml", "yaml" }
+
+require("nvim-treesitter.install").install(parsers)
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = parsers,
+    callback = function() vim.treesitter.start() end,
 })
