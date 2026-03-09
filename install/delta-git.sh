@@ -9,6 +9,7 @@ fi
 echo "Fetching latest delta release..."
 DEB_URL=$(curl -fsSL https://api.github.com/repos/dandavison/delta/releases/latest \
     | grep "browser_download_url" \
+    | grep "git-delta_" \
     | grep "amd64.deb" \
     | cut -d'"' -f4)
 

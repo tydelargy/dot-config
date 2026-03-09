@@ -44,6 +44,10 @@ echo "Scripts are idempotent — safe to re-run for updates."
 header "Updating package lists"
 sudo apt update -qq
 
+# ── Precursor───────────────────────────────────────────────────────────────────
+header "Precursor"
+run "curl.sh"   "Curl"
+
 # ── Shell ──────────────────────────────────────────────────────────────────────
 header "Shell"
 run "zsh.sh"         "Zsh"
@@ -53,6 +57,7 @@ run "p10k.sh"        "Powerlevel10k theme"
 
 # ── Development ────────────────────────────────────────────────────────────────
 header "Development tools"
+run "node.sh"      "Node npm"
 run "git.sh"       "Git"
 run "delta-git.sh" "delta (git diff viewer)"
 run "nvim.sh"      "Neovim"
@@ -86,3 +91,5 @@ fi
 
 echo "Run ./create-symlinks.sh to link dot-configs into place."
 echo ""
+echo "Last step needed from you... log out and back in for $SHELL to change to zsh"
+
