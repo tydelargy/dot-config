@@ -12,3 +12,7 @@ else
 fi
 
 rustc --version
+
+
+echo "Installing nextest"
+cargo install cargo-nextest --locked

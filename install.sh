@@ -57,6 +57,7 @@ run "p10k.sh"        "Powerlevel10k theme"
 
 # ── Development ────────────────────────────────────────────────────────────────
 header "Development tools"
+run "python.sh"    "Python and Clang GCC"
 run "node.sh"      "Node npm"
 run "git.sh"       "Git"
 run "delta-git.sh" "delta (git diff viewer)"
