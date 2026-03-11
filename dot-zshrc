@@ -152,7 +152,7 @@ if command -v eza &> /dev/null; then
 fi
 
 # Export fuzzy finder
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Improve command history
 HISTSIZE=10000
@@ -162,8 +162,6 @@ setopt HIST_FIND_NO_DUPS
 
 # Enable vi mode
 bindkey -v
-# Enable reverse search
-bindkey '^R' history-incremental-search-backward
 
 
 # Source cargo environment
