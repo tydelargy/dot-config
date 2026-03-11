@@ -16,4 +16,4 @@ node --version
 npm --version
 
 echo "Installing tree-sitter-cli"
-npm install -g tree-sitter-cli
+sudo npm install -g tree-sitter-cli prettier

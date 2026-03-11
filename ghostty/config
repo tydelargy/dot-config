@@ -68,7 +68,9 @@ adjust-cell-height = 25%
 window-save-state = always
 window-padding-balance = true
 
-background-opacity = 0.96
+# Off-white
+split-divider-color = CCCBC8
+# Dark Grey
 background = 1C2021
 
 ##  Keybinds
