@@ -74,9 +74,11 @@ run "btop.sh" "btop (system monitor)"
 
 # ── Applications ───────────────────────────────────────────────────────────────
 header "Applications"
-run "ghostty.sh" "Ghostty terminal"
-run "1pass.sh"   "1Password"
-run "claude.sh"  "Claude CLI"
+run "ghostty.sh"     "Ghostty terminal"
+run "1pass.sh"       "1Password"
+run "claude.sh"      "Claude CLI"
+run "7zip.sh"        "7Zip"
+run "pavucontrol.sh" "Pavucontrol"
 
 echo ""
 echo -e "${BOLD}${GREEN}Done!${NC}"
