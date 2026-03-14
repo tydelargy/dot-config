@@ -79,6 +79,7 @@ run "1pass.sh"       "1Password"
 run "claude.sh"      "Claude CLI"
 run "7zip.sh"        "7Zip"
 run "pavucontrol.sh" "Pavucontrol"
+run "obsidian.sh"    "Obsidian Markdown"
 
 echo ""
 echo -e "${BOLD}${GREEN}Done!${NC}"
