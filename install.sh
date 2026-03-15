@@ -66,11 +66,12 @@ run "rustup.sh"    "Rust toolchain"
 
 # ── CLI utilities ──────────────────────────────────────────────────────────────
 header "CLI utilities"
-run "fzf.sh"  "fzf (fuzzy finder)"
-run "rg.sh"   "ripgrep"
-run "jq.sh"   "jq (JSON processor)"
-run "eza.sh"  "eza (ls replacement)"
-run "btop.sh" "btop (system monitor)"
+run "fzf.sh"   "fzf (fuzzy finder)"
+run "rg.sh"    "ripgrep"
+run "jq.sh"    "jq (JSON processor)"
+run "eza.sh"   "eza (ls replacement)"
+run "btop.sh"  "btop (system monitor)"
+run "avahi.sh" "avahi-browse net discovery"
 
 # ── Applications ───────────────────────────────────────────────────────────────
 header "Applications"
