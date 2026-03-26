@@ -27,6 +27,31 @@ link() {
     ok "$src" "$dst"
 }
 
+# Prompt for jj identity and write ~/.config/jj/identity.toml (never committed).
+# jj reads all *.toml files in ~/.config/jj/, so this sits alongside config.toml.
+setup_jj_identity() {
+    local identity_cfg="$HOME/.config/jj/identity.toml"
+    local current_name="" current_email=""
+
+    if [[ -f "$identity_cfg" ]]; then
+        current_name="$(grep '^name'  "$identity_cfg" | cut -d'"' -f2 || true)"
+        current_email="$(grep '^email' "$identity_cfg" | cut -d'"' -f2 || true)"
+        echo ""
+        echo "  Current jj identity:"
+        echo "    name:  ${current_name:-(unset)}"
+        echo "    email: ${current_email:-(unset)}"
+        read -rp "  Update jj identity? [y/N] " update
+        [[ "${update:-n}" =~ ^[Yy] ]] || return 0
+    fi
+
+    local name email
+    read -rp "  jj user.name:  " name
+    read -rp "  jj user.email: " email
+
+    printf '[user]\nname = "%s"\nemail = "%s"\n' "$name" "$email" > "$identity_cfg"
+    echo -e "  ${GREEN}✓${NC} Written ~/.config/jj/identity.toml (not tracked by git)"
+}
+
 # Prompt for git identity and write ~/.gitconfig.local (never committed).
 setup_git_identity() {
     local local_cfg="$HOME/.gitconfig.local"
@@ -64,6 +89,12 @@ link "$REPO/dot-gitconfig"  "$HOME/.gitconfig"
 echo ""
 echo -e "  ${BOLD}Git identity${NC} (stored in ~/.gitconfig.local, never committed)"
 setup_git_identity
+
+# jj — config lives under ~/.config/jj/ (all *.toml files there are merged)
+link "$REPO/dot-jj/config.toml"  "$HOME/.config/jj/config.toml"
+echo ""
+echo -e "  ${BOLD}jj identity${NC} (stored in ~/.config/jj/identity.toml, never committed)"
+setup_jj_identity
 
 # Neovim
 link "$REPO/dot-nvim" "$HOME/.config/nvim"
