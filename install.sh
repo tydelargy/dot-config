@@ -61,6 +61,7 @@ run "python.sh"    "Python and Clang GCC"
 run "node.sh"      "Node npm"
 run "git.sh"       "Git"
 run "delta-git.sh" "delta (git diff viewer)"
+run "gitui.sh"    "gitui (git TUI)"
 run "nvim.sh"      "Neovim"
 run "rustup.sh"    "Rust toolchain"
 

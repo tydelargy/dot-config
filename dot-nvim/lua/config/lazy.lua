@@ -40,6 +40,12 @@ require("lazy").setup({
     -- Rainbow delimiters: colorize matching brackets using treesitter
     { "HiPhish/rainbow-delimiters.nvim", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 
+    -- Gitsigns: gutter signs, inline blame, hunk staging
+    { "lewis6991/gitsigns.nvim" },
+
+    -- Diffview: tabbed diff views, file history, merge conflicts
+    { "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+
     -- LSP: language server support.
     { "neovim/nvim-lspconfig" },
 
