@@ -1,6 +1,7 @@
 [ui]
 default-command = "log"
 editor = "nvim"
+diff-formatter = ":git"
 pager = "delta"
 
 [aliases]
