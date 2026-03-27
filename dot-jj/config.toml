@@ -3,6 +3,7 @@ default-command = "log"
 editor = "nvim"
 diff-formatter = ":git"
 pager = "delta"
+merge-editor = "meld"
 
 [aliases]
 # Add workflow shortcuts here as jj usage matures
