@@ -64,6 +64,7 @@ run "jj.sh"        "jj (Jujutsu VCS)"
 run "meld.sh"      "Meld (merge conflict resolver)"
 run "delta-git.sh" "delta (git diff viewer)"
 run "gitui.sh"    "gitui (git TUI)"
+run "gh.sh"       "gh (GitHub CLI)"
 run "nvim.sh"      "Neovim"
 run "rustup.sh"    "Rust toolchain"
 
@@ -75,6 +76,7 @@ run "jq.sh"    "jq (JSON processor)"
 run "eza.sh"   "eza (ls replacement)"
 run "btop.sh"  "btop (system monitor)"
 run "avahi.sh" "avahi-browse net discovery"
+run "tk.sh"    "tk (ticket tracking)"
 
 # ── Applications ───────────────────────────────────────────────────────────────
 header "Applications"
